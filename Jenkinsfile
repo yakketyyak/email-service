@@ -19,9 +19,9 @@ pipeline {
         }
         stage('Deploy to tomcat'){
           steps {
-            deploy {
+            deploy (
+              war: '**/*.war', onFailure: true,
               adapters(
-                  war: '**/*.war', onFailure: true,
                   adapters: [
                       tomcat9(
                         url: 'http://localhost:8888/',
@@ -30,6 +30,7 @@ pipeline {
                       )
                   ]
               )
+            )
             }
           }
         }
