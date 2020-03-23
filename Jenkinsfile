@@ -32,9 +32,9 @@ pipeline {
           steps {
             deploy (
                 war: '**/*.war', onFailure: false,
-                contextPath: '${ARTIFACTID}-${VERSION}',
+                //contextPath: '${ARTIFACTID}-${VERSION}',
                 adapters: [
-                    tomcat9(
+                    tomcat8(
                       url: 'http://localhost:8888/',
                       credentialsId: 'tomcat-deployer'
                     )
