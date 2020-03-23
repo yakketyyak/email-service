@@ -1,10 +1,10 @@
 pipeline {
    
    agent any
-   /*environment {
-    //VERSION = readMavenPom().getVersion()
-    //SSH_LOCAL_HOST = 'localhost'
-    }*/
+   environment {
+    IMAGE = readMavenPom().getArtifactId()
+    VERSION = readMavenPom().getVersion()
+   }
 
     stages {
 
@@ -18,7 +18,7 @@ pipeline {
             }
         }
         stage('Deploy to tomcat'){
-          steps{
+          steps('deploy'){
             adapters(
                 war: '**/*.war', onFailure: true,
                 adapters: [
