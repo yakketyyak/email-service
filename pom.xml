@@ -13,6 +13,7 @@
 	<artifactId>email-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>email-service</name>
+	<packaging>war</packaging>
 	<description>Projet simple d'envoi d'email avec template</description>
 
 	<properties>
