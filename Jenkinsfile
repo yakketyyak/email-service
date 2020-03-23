@@ -21,7 +21,6 @@ pipeline {
           steps {
             deploy (
               war: '**/*.war', onFailure: true,
-              adapters(
                   adapters: [
                       tomcat9(
                         url: 'http://localhost:8888/',
@@ -29,7 +28,6 @@ pipeline {
                         //contextPath: 'tomcat'
                       )
                   ]
-              )
             )
             }
           }
