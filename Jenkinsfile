@@ -26,8 +26,10 @@ pipeline {
                 sh 'mvn test' 
               }
             }
-          }
-    },
+      }
+
+    }
+   
      post {
          deploy (
               war: '**/*${ARTIFACTID}-${VERSION}.war', onFailure: true,
