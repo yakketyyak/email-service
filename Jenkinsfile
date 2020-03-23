@@ -31,7 +31,7 @@ pipeline {
         stage('Deploy on tomcat-8'){
           steps {
             deploy (
-                war: 'targer/*.war', onFailure: true,
+                war: '**/*${ARTIFACTID}-${VERSION}.war', onFailure: true,
                 //contextPath: '${ARTIFACTID}-${VERSION}',
                 adapters: [
                     tomcat8(
