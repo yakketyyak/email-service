@@ -21,16 +21,15 @@ pipeline {
           steps {
             deploy (
               war: '**/*.war', onFailure: true,
-                  adapters: [
-                      tomcat9(
-                        url: 'http://localhost:8888/',
-                        credentialsId: 'tomcat-deployer'
-                        //contextPath: 'tomcat'
-                      )
-                  ]
+              adapters: [
+                  tomcat9(
+                    url: 'http://localhost:8888/',
+                    credentialsId: 'tomcat-deployer'
+                    //contextPath: 'tomcat'
+                  )
+              ]
             )
             }
           }
-        }
     }
 }
