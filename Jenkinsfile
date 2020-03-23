@@ -2,7 +2,7 @@ pipeline {
    
    agent any
    environment {
-    IMAGE = readMavenPom().getArtifactId()
+    ARTIFACTID = readMavenPom().getArtifactId()
     VERSION = readMavenPom().getVersion()
    }
 
@@ -17,10 +17,20 @@ pipeline {
               }
             }
         }
-        stage('Deploy to tomcat'){
+        stage('Test'){
           steps {
-            deploy (
-              war: '**/*.war', onFailure: true,
+               withMaven(
+                maven: 'maven-3.6.3',
+                //image docker
+                mavenLocalRepo: '.repository'){
+                sh 'mvn test' 
+              }
+            }
+          }
+    },
+     post {
+         deploy (
+              war: '**/*${ARTIFACTID}-${VERSION}.war', onFailure: true,
               contextPath: 'webapps',
               adapters: [
                   tomcat9(
@@ -28,8 +38,6 @@ pipeline {
                     credentialsId: 'tomcat-deployer'
                   )
               ]
-            )
-            }
-          }
+          )
     }
 }
