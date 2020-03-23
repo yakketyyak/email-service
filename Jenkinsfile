@@ -17,7 +17,7 @@ pipeline {
               }
             }
         }
-        stage('Test'){
+        /*stage('Test'){
           steps {
                withMaven(
                 maven: 'maven-3.6.3',
@@ -26,7 +26,7 @@ pipeline {
                 sh 'mvn test' 
               }
             }
-        }
+        }*/
 
         stage('Deploy on tomcat9'){
           steps {
