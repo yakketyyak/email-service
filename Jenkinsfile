@@ -36,7 +36,8 @@ pipeline {
                 adapters: [
                     tomcat8(
                       url: 'http://localhost:8888/',
-                      credentialsId: 'tomcat-deployer'
+                      credentialsId: 'tomcat-deployer',
+                      path: ''
                     )
                 ]
             )
