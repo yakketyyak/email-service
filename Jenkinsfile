@@ -26,13 +26,11 @@ pipeline {
                 sh 'mvn test' 
               }
             }
-      }
+        }
 
-    }
-   
-     post {
-         deploy (
-              war: '**/*${ARTIFACTID}-${VERSION}.war', onFailure: true,
+        stage('Deploy on tomcat9'){
+          deploy (
+              war: '**/*${ARTIFACTID}-${VERSION}.war', onFailure: false,
               contextPath: 'webapps',
               adapters: [
                   tomcat9(
@@ -41,5 +39,11 @@ pipeline {
                   )
               ]
           )
+        }
+
     }
+   
+    /*post {
+         
+    }*/
 }
