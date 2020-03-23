@@ -24,7 +24,7 @@ pipeline {
                 adapters: [
                     tomcat9(
                       url: 'http://localhost:8888/',
-                      credentialsId: 'tomcat-deployer',
+                      credentialsId: 'tomcat-deployer'
                       //contextPath: 'tomcat'
                     )
                 ]
