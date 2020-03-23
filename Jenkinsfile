@@ -17,7 +17,7 @@ pipeline {
               }
             }
         }
-        /*stage('Test'){
+        stage('Test'){
           steps {
                withMaven(
                 maven: 'maven-3.6.3',
@@ -26,12 +26,12 @@ pipeline {
                 sh 'mvn test' 
               }
             }
-        }*/
+        }
 
         stage('Deploy on tomcat9'){
           steps {
             deploy (
-                war: '**/*${ARTIFACTID}-${VERSION}.war', onFailure: false,
+                war: '**/*.war', onFailure: false,
                 contextPath: 'webapps',
                 adapters: [
                     tomcat9(
