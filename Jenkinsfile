@@ -18,7 +18,7 @@ pipeline {
             }
         }
         stage('Deploy to tomcat'){
-          steps('deploy'){
+          deploy {
             adapters(
                 war: '**/*.war', onFailure: true,
                 adapters: [
