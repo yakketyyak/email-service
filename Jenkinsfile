@@ -18,17 +18,19 @@ pipeline {
             }
         }
         stage('Deploy to tomcat'){
-          deploy {
-            adapters(
-                war: '**/*.war', onFailure: true,
-                adapters: [
-                    tomcat9(
-                      url: 'http://localhost:8888/',
-                      credentialsId: 'tomcat-deployer'
-                      //contextPath: 'tomcat'
-                    )
-                ]
-            )
+          steps {
+            deploy {
+              adapters(
+                  war: '**/*.war', onFailure: true,
+                  adapters: [
+                      tomcat9(
+                        url: 'http://localhost:8888/',
+                        credentialsId: 'tomcat-deployer'
+                        //contextPath: 'tomcat'
+                      )
+                  ]
+              )
+            }
           }
         }
     }
