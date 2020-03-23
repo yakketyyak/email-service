@@ -29,16 +29,18 @@ pipeline {
         }
 
         stage('Deploy on tomcat9'){
-          deploy (
-              war: '**/*${ARTIFACTID}-${VERSION}.war', onFailure: false,
-              contextPath: 'webapps',
-              adapters: [
-                  tomcat9(
-                    url: 'http://localhost:8888/',
-                    credentialsId: 'tomcat-deployer'
-                  )
-              ]
-          )
+          steps {
+            deploy (
+                war: '**/*${ARTIFACTID}-${VERSION}.war', onFailure: false,
+                contextPath: 'webapps',
+                adapters: [
+                    tomcat9(
+                      url: 'http://localhost:8888/',
+                      credentialsId: 'tomcat-deployer'
+                    )
+                ]
+            )
+          }
         }
 
     }
