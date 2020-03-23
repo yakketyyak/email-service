@@ -21,11 +21,11 @@ pipeline {
           steps {
             deploy (
               war: '**/*.war', onFailure: true,
+              contextPath: 'webapps',
               adapters: [
                   tomcat9(
                     url: 'http://localhost:8888/',
                     credentialsId: 'tomcat-deployer'
-                    //contextPath: 'tomcat'
                   )
               ]
             )
