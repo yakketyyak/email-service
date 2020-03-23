@@ -28,7 +28,7 @@ pipeline {
             }
         }
 
-        stage('Deploy on tomcat9'){
+        stage('Deploy on tomcat-8'){
           steps {
             deploy (
                 war: '**/*.war', onFailure: true,
